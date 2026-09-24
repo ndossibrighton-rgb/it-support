@@ -1,10 +1,11 @@
 require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -14,12 +15,15 @@ const pool = new Pool({
     host: process.env.DB_HOST,
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT
+    port: process.env.DB_PORT,
+    ssl: process.env.DB_SSL === 'true'
+        ? { rejectUnauthorized: false }
+        : false
 });
 
 // Test backend
 app.get('/', (req, res) => {
-    res.send('Backend is working!');
+    res.send('IT Support backend is working!');
 });
 
 // Save suggestion
@@ -61,6 +65,7 @@ app.post('/profiles', async (req, res) => {
         res.status(500).json({ message: 'Failed to save profile' });
     }
 });
+
 // Get profile
 app.get('/profiles/:gmail', async (req, res) => {
     const { gmail } = req.params;
@@ -86,6 +91,7 @@ app.get('/profiles/:gmail', async (req, res) => {
         });
     }
 });
+
 // Update profile
 app.put('/profiles/:gmail', async (req, res) => {
     const { gmail } = req.params;
@@ -122,5 +128,5 @@ app.put('/profiles/:gmail', async (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on http://192.168.46.232:${PORT}`);
+    console.log(`IT Support backend running on port ${PORT}`);
 });
