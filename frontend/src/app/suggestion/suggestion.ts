@@ -35,7 +35,7 @@ export class Suggestion implements OnInit {
     try {
 
       const response = await fetch(
-        `https://armor-rebel-dvds-certainly.trycloudflare.com/profiles/${encodeURIComponent(gmail)}`
+        `https://it-support-backend-2fqt.onrender.com/profiles/${encodeURIComponent(gmail)}`
       );
 
       if (response.ok) {
@@ -58,7 +58,7 @@ export class Suggestion implements OnInit {
     try {
 
       const response = await fetch(
-        'https://armor-rebel-dvds-certainly.trycloudflare.com/suggestions',
+        'https://it-support-backend-2fqt.onrender.com/suggestions',
         {
           method: 'POST',
 

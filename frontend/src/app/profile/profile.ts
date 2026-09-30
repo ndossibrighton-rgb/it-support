@@ -50,7 +50,7 @@ export class Profile implements OnInit {
     try {
 
       const response = await fetch(
-        `https://convention-pickup-viewer-wines.trycloudflare.com/profiles/${encodeURIComponent(this.profile.gmail)}`
+        `https://it-support-backend-2fqt.onrender.com/profiles/${encodeURIComponent(this.profile.gmail)}`
       );
 
       if (response.ok) {
@@ -86,7 +86,7 @@ export class Profile implements OnInit {
 
       // Check whether profile already exists
       const checkResponse = await fetch(
-        `https://convention-pickup-viewer-wines.trycloudflare.com/profiles/${encodeURIComponent(this.profile.gmail)}`
+        `https://it-support-backend-2fqt.onrender.com/profiles/${encodeURIComponent(this.profile.gmail)}`
       );
 
       let response;
@@ -95,7 +95,7 @@ export class Profile implements OnInit {
 
         // UPDATE existing profile
         response = await fetch(
-          `https://convention-pickup-viewer-wines.trycloudflare.com/profiles/${encodeURIComponent(this.profile.gmail)}`,
+          `https://it-support-backend-2fqt.onrender.com/profiles/${encodeURIComponent(this.profile.gmail)}`,
           {
             method: 'PUT',
             headers: {
@@ -113,7 +113,7 @@ export class Profile implements OnInit {
 
         // CREATE new profile
         response = await fetch(
-          'https://convention-pickup-viewer-wines.trycloudflare.com/profiles',
+          'https://it-support-backend-2fqt.onrender.com/profiles',
           {
             method: 'POST',
             headers: {
